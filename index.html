@@ -1,10 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Vuesax</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" 
+    crossorigin="anonymous">
+    
+    <!--Other CSS-->
     <link rel="stylesheet" href="css/style.css">
     <link href="fonts/css/all.css" rel="stylesheet">
 </head>
 <body>
-    <script src="js/script.js"></script>
-</body>
+    
+    <div class="wrapper">
+        
+        <!--Sidebar-->
+        <aside class="sidebar">
+        </aside>
+
+        <!--Page Content-->
+        <div class="content">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="far fa-check-square"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="far fa-comment"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="far fa-envelope"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="far fa-calendar"></i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="far fa-star" style="color: #FFA84C;"></i></a></li>
+                    </ul>
+                    <ul class="nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">English</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="far fa-bell"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">John Doe</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <nav>
+                <ol class="cd-breadcrumb">
+                    <li class="core"><a href="#">Card Actions</a></li>
+                    <li><a href="#"><i class="fas fa-home"></i></a></li>
+                    <li><a href="#">eCommerce</a></li>
+                    <li class="current">Electronics</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="product-nav">
+                        <p style="padding-top: 12px;" class="title">Filters</p>
+                    </div>
+                    <form class="filter-form">
+                        <p>Multi Range</p>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="range1" name="range">
+                            <label class="custom-control-label" for="range1">
+                                $10
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="range2" name="range">
+                            <label class="custom-control-label" for="range2">
+                                $10-$100
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="range3" name="range">
+                            <label class="custom-control-label" for="range3">
+                                $100-350
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="range4" name="range">
+                            <label class="custom-control-label" for="range4">
+                                $500
+                            </label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="range5" name="range" checked>
+                            <label class="custom-control-label" for="range5">
+                                All
+                            </label>
+                       </div>
+                       <div class="line"></div> 
+                       <div>
+                           <ul class="nav">
+                               <li>
+                                <p class="title-slider">Slider</p>
+                               </li>
+                               <li class="ml-auto">
+                                <p class="title-slider">1.99-4098</p>
+                               </li>
+                           </ul>
+                        </div>
+                       <input class="disc" type="range" min="0" max="30" step="1" value="15"/>
+
+                       <div class="line"></div> 
+
+                        <p>Category</p>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat1" name="category">
+                            <label class="custom-control-label" for="cat1">Cell Phones <span>1920</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat2" name="category">
+                            <label class="custom-control-label" for="cat2">Computers and Tablets <span>1820</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat3" name="category">
+                            <label class="custom-control-label" for="cat3">Cell Accessories <span>462</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat4" name="category">
+                            <label class="custom-control-label" for="cat4">Appliances <span>6556</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat5" name="category">
+                            <label class="custom-control-label" for="cat5">Audio <span>120</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat6" name="category">
+                            <label class="custom-control-label" for="cat6">iPhone Accessories <span>320</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat7" name="category">
+                            <label class="custom-control-label" for="cat7">Cameras and Camcoders <span>120</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat8" name="category">
+                            <label class="custom-control-label" for="cat8">iPhone Cases &amp; Clips <span>52</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat9" name="category">
+                            <label class="custom-control-label" for="cat9">TV &amp; Home Theatre <span>55</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="cat0" name="category">
+                            <label class="custom-control-label" for="cat0">Small Kitchen Appliances <span>10</span></label>
+                        </div>
+                        <div class="line"></div>
+                        <p>Brand</p>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand1" name="brand">
+                            <label class="custom-control-label" for="brand1">Insigi <span>220</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand2" name="brand">
+                            <label class="custom-control-label" for="brand2">Samsung <span>120</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand3" name="brand">
+                            <label class="custom-control-label" for="brand3">Apple <span>320</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand4" name="brand">
+                            <label class="custom-control-label" for="brand4">HP <span>32</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand5" name="brand">
+                            <label class="custom-control-label" for="brand5">Sony <span>520</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand6" name="brand">
+                            <label class="custom-control-label" for="brand6">Metra <span>55</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand7" name="brand">
+                            <label class="custom-control-label" for="brand7">Dyne <span>120</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand8" name="brand">
+                            <label class="custom-control-label" for="brand8">LG <span>98</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand9" name="brand">
+                            <label class="custom-control-label" for="brand9">Canon <span>99</span></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="brand0" name="brand">
+                            <label class="custom-control-label" for="brand0">Speck <span>575</span></label>
+                        </div>
+                        <div class="line"></div>
+                        <p>Rating</p>
+                        <div>
+                            <label class="l">
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i> &amp; Up 
+                                <span>8500</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="l"> 
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star urate"></i> &amp; Up 
+                                <span>3250</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="l"> 
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star urate"></i>
+                                <i class="form-star far fa-star urate"></i> &amp; Up 
+                                <span>1120</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="l"> 
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star urate"></i>
+                                <i class="form-star far fa-star urate"></i>
+                                <i class="form-star far fa-star urate"></i> &amp; Up 
+                                <span>3320</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="l"> 
+                                <i class="form-star far fa-star rate"></i>
+                                <i class="form-star far fa-star urate"></i>
+                                <i class="form-star far fa-star urate"></i>
+                                <i class="form-star far fa-star urate"></i>
+                                <i class="form-star far fa-star urate"></i> &amp; Up 
+                                <span>5452</span>
+                            </label>
+                        </div>
+                    </form>
+                    <div style="margin-top:20px;">
+                        <button class="btn btn-primary btn-clear">CLEAR ALL FILTERS</button>
+                    </div>
+                </div>
+                <div class="col-md-9">
+
+                    <div class="product-nav">
+                        <p class="title">7628 Results found in 5ms</p>
+                        <ul class="nav">
+                            <div class="dropdown">
+                                <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                                  Default
+                                </button>
+                            </div>
+                            <li><a href="#"><i class="fas fa-th-large"></i></a></li>
+                            <li><a href="#"><i class="fas fa-bars"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <form class="search-product">
+                            <input placeholder="Search here" class="form-input" type="search"/>
+                            <button class="btn-search" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 product-item">                             
+                            <div class="product">
+                                <img src="images/products/apple-watch.png" class="product-img">
+                                <div class="product-info">
+                                    <button class="btn btn-primary btn-rating">3.4 <span class="far fa-star"></span></button>
+                                    <span class="price">$399</span>
+                                    <p class="product-name">Apple Watch Series 4 GPS<br></p>
+                                    <span class="product-description">Redesigned from scratch and completely revised.</span>
+                                </div>
+                                <div class="str">
+                                    <button class="btn btn-wish btn-light left"><i class="far fa-heart"></i> WISHLIST</button>
+                                    <button class="btn btn-primary btn-add right"><i class="fas fa-shopping-bag"></i> ADD TO CART</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </html>
