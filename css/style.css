@@ -180,7 +180,7 @@ input[type="range"].disc::-webkit-slider-thumb {
     display:block;
     margin:auto;
     padding: 25px 10px 10px 10px;
-    max-height: 250px;
+    max-height: 270px;
 }
 .product-info {
     padding: 15px 15px 10px;
@@ -319,6 +319,7 @@ input[type="range"].disc::-webkit-slider-thumb {
     border-radius: 8px;
     background: #FFF;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135);
+    height: 100%;
 }
 
 div .price {
