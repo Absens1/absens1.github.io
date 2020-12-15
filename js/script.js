@@ -1,3 +1,6 @@
+/* ---------------------------------------------------
+    КЛАССЫ
+----------------------------------------------------- */
 class CardProduct {
 
     #src;
@@ -62,8 +65,15 @@ class CardProduct {
         </div>`;
         return div;
     }
+
+    get price() {
+        return this.#price;
+    }
 }
 
+/* ---------------------------------------------------
+    ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+----------------------------------------------------- */
 
 // список всех товаров
 let listProducts = [new CardProduct('images/products/apple-watch.png', 
@@ -130,17 +140,31 @@ let listProducts = [new CardProduct('images/products/apple-watch.png',
                                     'Appliances',
                                     'Apple')
 ];
-// создание и добавляение товаров по списку при загрузке
-addDefaultProducts();
-// функция добаяления товаров по умолчанию (без фильтов)
-function addDefaultProducts() {
-    listProducts.forEach(product => $('#product-list').append(product.createProduct()));
-}
 
-let priceFilter;
+const MIN_PRICE = 0;
+const MAX_PRICE = getMinMaxProductsPrice().max;
+
+let minPriceFilter = MIN_PRICE;
+let maxPriceFilter = MAX_PRICE;
 let categoryFilters = new Set();
 let brandFilters = new Set();
 let ratingFilter;
+let searchFilter;
+
+/* ---------------------------------------------------
+    ФУНКЦИИ
+----------------------------------------------------- */
+
+// создание и добавляение товаров по списку при загрузке
+createAndAddDefaultProducts();
+
+/**
+ * Создает и добавляет продукты.
+ * 
+ */
+function createAndAddDefaultProducts() {
+    listProducts.forEach(product => $('#product-list').append(product.createProduct()));
+}
 
 /**
  * Обновляет фильтры товаров.
@@ -150,9 +174,8 @@ function updateFilters() {
 $('.product-item').hide().filter(function() {
     let self = $(this);
     let result = true;
-    if (priceFilter != null && priceFilter !='All') {
-      result = result && (self.data('price') >= convertPriceFilterValue(priceFilter).min && 
-                          self.data('price') <= convertPriceFilterValue(priceFilter).max)
+    if (minPriceFilter != null && maxPriceFilter != null) {
+        result = result && (self.data('price') >= minPriceFilter && self.data('price') <= maxPriceFilter)
     }
     if (categoryFilters.size != 0) {
         result = result && categoryFilters.has(self.data('category'));
@@ -160,39 +183,80 @@ $('.product-item').hide().filter(function() {
     if (brandFilters.size != 0) {
         result = result && brandFilters.has(self.data('brand'));
     }
+    if (searchFilter && searchFilter !== "") {
+        result = result && self.data('name').toLowerCase().indexOf(searchFilter) > -1
+    }
     return result;
   }).show();
 }
 
 /**
- * Конветрирует ценовое значение фильтра
- *
- * @param {string} value - Ценовое значение (диапазон).
- * @return {Collection} Минимальная и максимальная цена (key:value).
+ * Поиск минимальной и максимальной цены продуктов.
+ * 
  */
-function convertPriceFilterValue(value) {
-    let min = 0;
-    let max = 0;
-    // Если фильтр с диапазоном
-    if (value.indexOf('-') > 0) {
-         min = +value.split('-')[0];
-         max = +value.split('-')[1];
-    } 
-    // Если фильтр по конкретной цене
-    else {
-        min = +value;
-        max = 999999999;
+function getMinMaxProductsPrice() {
+    let min = listProducts[0].price;
+    let max = listProducts[0].price;
+    for (let i = 1; i < listProducts.length; i++) {
+        if (max < listProducts[i].price) {
+            max = listProducts[i].price;
+        }
+        if (min > listProducts[i].price) {
+            min = listProducts[i].price;
+        }
     }
     return {min : min, max : max};
 }
 
+/**
+ * Конветрирует ценовое значение фильтра
+ *
+ * @param {string} value - Ценовое значение.
+ */
+function convertPriceFilterValue(value) {
+    // Если фильтр с диапазоном
+    if (value.indexOf('-') > 0) {
+        minPriceFilter = +value.split('-')[0];
+        maxPriceFilter = +value.split('-')[1];
+    } 
+    else if (value == 'All') {
+        minPriceFilter = MIN_PRICE;
+        maxPriceFilter = MAX_PRICE;
+    }
+    // Если фильтр по конкретной цене
+    else {
+        minPriceFilter = +value;
+        maxPriceFilter = MAX_PRICE;
+    }
+}
+
+/**
+ * Обновление ценового диапазона слайдера (range)
+ *
+ */
+function updatePriceSliderRange() {
+    $("#slider-range").slider({
+        range: true,
+        values: [minPriceFilter, maxPriceFilter],
+        slide: function(event, ui) {
+        $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[1]);
+        }
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+        " - $" + $("#slider-range").slider("values", 1));
+}
+
+/* ---------------------------------------------------
+    СОБЫТИЯ
+----------------------------------------------------- */
+
 // событие изменения состояния radio (multi range)
 $(":radio").change(function() {
-    if ($(this).is(':checked')) {
-        priceFilter = this.value;
-    } else { priceFilter = null; }
+    convertPriceFilterValue(this.value);
+    updatePriceSliderRange();
     updateFilters();
 });
+
 // событие изменения состояния checkbox (categoty/brand)
 $(":checkbox").change(function() {
     if (this.name == 'brand') {
@@ -214,5 +278,47 @@ $(":checkbox").change(function() {
 // событие сброса фильтров
 $('.btn-clear').click(function() {
     $('input:checkbox').prop('checked', false);
+    $('input[name="range"][value="All"]').prop('checked', true);
     $('.product-item').show();
+    minPriceFilter = MIN_PRICE;
+    maxPriceFilter = MAX_PRICE;
+    searchFilter = null;
+    updatePriceSliderRange();
+});
+
+// событие поиска товара по названию
+$('.btn-search').click(function() {
+    searchFilter = $('#search').val().toLowerCase();
+    updateFilters();
+});
+
+// событие поиска товара по названию
+$("#search").on("keyup", function() {
+    searchFilter = $(this).val().toLowerCase();
+    updateFilters();
+});
+
+// событие для slider
+$(function() {
+    $("#slider-range").slider({
+      range: true,
+      min: minPriceFilter,
+      max: maxPriceFilter,
+      values: [minPriceFilter, maxPriceFilter],
+      slide: function(event, ui) {
+        $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[1]);
+      },
+      stop: function( event, ui ) { 
+        let rangeAll = $('input[name="range"][value="All"]');
+        if (!rangeAll.is(':checked')) {
+            rangeAll.prop('checked', true);
+        }
+        let minMaxPrice = $("#slider-range").slider("values");
+        minPriceFilter = minMaxPrice[0];
+        maxPriceFilter = minMaxPrice[1];
+        updateFilters();
+    },
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+      " - $" + $("#slider-range").slider("values", 1));
 });
