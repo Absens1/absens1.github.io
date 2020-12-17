@@ -2,7 +2,7 @@
     КЛАССЫ
 ----------------------------------------------------- */
 class CardProduct {
-
+    #id;
     #src;
     #rating;
     #price;
@@ -16,6 +16,7 @@ class CardProduct {
      *
      * @constructor
      * @this  {CardProduct}
+     * @param {string} id - Идентификатор продукта.
      * @param {string} src - Путь к изображению.
      * @param {number} rating - Рейтинг продукта.
      * @param {number} price - Цена продукта.
@@ -24,7 +25,8 @@ class CardProduct {
      * @param {string} category - Категория продукта.
      * @param {string} brand - Бренд продукта.
      */
-    constructor(src, rating, price, name, description, category, brand) {
+    constructor(id ,src, rating, price, name, description, category, brand) {
+        this.#id = id;
         this.#src = src;
         this.#rating = rating;
         this.#price = price;
@@ -42,6 +44,7 @@ class CardProduct {
     createProduct() {
         let div = document.createElement('div');
         div.classList.add('col-md-4', 'product-item');
+        div.setAttribute('data-id', this.#id);
         div.setAttribute('data-rating', this.#category);
         div.setAttribute('data-price', this.#price);
         div.setAttribute('data-name', this.#name);
@@ -76,63 +79,72 @@ class CardProduct {
 ----------------------------------------------------- */
 
 // список всех товаров
-let listProducts = [new CardProduct('images/products/apple-watch.png', 
+let listProducts = [new CardProduct(0,
+                                    'images/products/apple-watch.png', 
                                     3.4, 
                                     399, 
                                     'Apple Watch Series 4 GPS',
                                     'Redesigned from scratch and completely revised.',
                                     'iPhone Accessories',
                                     'Apple'),
-                    new CardProduct('images/products/jbl-speaker.png', 
+                    new CardProduct(1,
+                                    'images/products/jbl-speaker.png', 
                                     5.0, 
                                     199, 
                                     'JBL Speaker',
                                     'Redesigned from scratch and completely revised.',
                                     'Audio',
                                     'JBL'),
-                    new CardProduct('images/products/iphone-x.png', 
+                    new CardProduct(2,
+                                    'images/products/iphone-x.png', 
                                     4.4, 
                                     899, 
                                     'Apple iPhone X 128GB',
                                     'Redesigned from scratch and completely revised.',
                                     'Cell Phones',
                                     'Apple'),
-                    new CardProduct('images/products//beats-headphones.png', 
+                    new CardProduct(3,
+                                    'images/products//beats-headphones.png', 
                                     3.4, 
                                     459, 
                                     'Beats Headphones',
                                     'Redesigned from scratch and completely revised.',
                                     'Audio',
                                     'Beats'),
-                    new CardProduct('images/products/macbook-pro.png', 
+                    new CardProduct(4,
+                                    'images/products/macbook-pro.png', 
                                     4.5, 
                                     2499, 
                                     'Apple Macbook Pro 512GB SSD',
                                     'Redesigned from scratch and completely revised.',
                                     'Computers and Tablets',
                                     'Apple'),
-                    new CardProduct('images/products/ipad-pro.png', 
+                    new CardProduct(5,
+                                    'images/products/ipad-pro.png', 
                                     5.0, 
                                     899, 
                                     'Apple iPad Pro 64GB',
                                     'Redesigned from scratch and completely revised.',
                                     'Computers and Tablets',
                                     'Apple'),
-                    new CardProduct('images/products/homepod.png', 
+                    new CardProduct(6,
+                                    'images/products/homepod.png', 
                                     3.3, 
                                     399, 
                                     'Apple Homepod',
                                     'Redesigned from scratch and completely revised.',
                                     'Audio',
                                     'Apple'),
-                    new CardProduct('images/products/jlab-audio-wireless.png', 
+                    new CardProduct(7,
+                                    'images/products/jlab-audio-wireless.png', 
                                     5.0, 
                                     2499, 
                                     'JBuds Air Wireless Bluetooth',
                                     'Redesigned from scratch and completely revised.',
                                     'Audio',
                                     'JBuds'),
-                    new CardProduct('images/products/magic-mouse.png', 
+                    new CardProduct(8,
+                                    'images/products/magic-mouse.png', 
                                     4.4, 
                                     99, 
                                     'Apple Magic Mouse ',
@@ -296,6 +308,17 @@ $('.btn-search').click(function() {
 $("#search").on("keyup", function() {
     searchFilter = $(this).val().toLowerCase();
     updateFilters();
+});
+
+// событие кнопки wish продукта
+$(".btn-wish").on("click", function() {
+    let icon = $(this).children('i');
+    let iconColor = icon.css('color');
+    if (iconColor == "rgb(33, 37, 41)") { 
+        icon.css('color', 'rgb(255, 0, 0)'); 
+    } else {
+        icon.css('color', 'rgb(33, 37, 41)'); 
+    }
 });
 
 // событие для slider
